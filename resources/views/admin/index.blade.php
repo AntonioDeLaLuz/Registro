@@ -23,7 +23,7 @@
                         <p class="text-3xl text-center text-white uppercase ">Usuarios</p>
                     </div>
                 </a>
-                <a href="{{ route('participantes.index') }}" class="block mb-5 ">
+                <a href="{{ route('admin.gestion_eventos') }}" class="block mb-5 ">
                     <div class="bg-PanelAdministracionBTN rounded-3xl px-5 py-8 flex items-center justify-center flex-col">
                         <i class="fa-solid fa-folder fa-2xl my-5" style="color: #ffffff;"></i>
                         <p class="text-3xl text-center text-white uppercase">Inscripciones</p>

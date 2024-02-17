@@ -25,6 +25,7 @@ Route::post('/imagenes', [ImagenController::class,'store'])->name('image.store')
 // Admin
 Route::get('/administracion', [AdminController::class,'index'])->name('admin.index');
 Route::get('/administracion/eventos', [AdminController::class,'adminEventos'])->name('admin.eventos');
+Route::get('/administracion/gestion/eventos', [AdminController::class,'adminGestionEventos'])->name('admin.gestion_eventos');
 Route::get('/administracion/comentarios', [AdminController::class,'adminComentarios'])->name('admin.comentarios');
 Route::get('/administracion/usuarios', [AdminController::class,'adminUsers'])->name('admin.users');
 Route::get('/administracion/colaboradores', [AdminController::class,'adminPosts'])->name('admin.posts');
@@ -72,7 +73,7 @@ Route::get('/export/list/assistants', [ListAssistantsExcelController::class, 'Li
 
 // Participante
 Route::get('/participantes', [ParticipanteController::class,'index'])->name('participantes.index');
-Route::get('/participantes', [ParticipanteController::class,'destroy'])->name('participantes.destroy');
+Route::get('/participantes/Eliminar', [ParticipanteController::class,'destroy'])->name('participantes.destroy');
 Route::get('/participantes/registrar', [ParticipanteController::class,'create'])->name('participante.create');
 Route::post('/participantes/registrar', [ParticipanteController::class,'store']);
 Route::get('/participantes/{participante}/edit',[ ParticipanteController::class,'edit'])->name('participante.edit');

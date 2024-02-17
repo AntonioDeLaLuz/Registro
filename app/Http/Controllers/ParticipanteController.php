@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ParticipanteController extends Controller
 {
     //
-    public function index (){
+    public function index(){
         $participantes=Participante::all();
         return view('participantes.index',['participantes'=>$participantes]);
     }
@@ -84,16 +84,20 @@ class ParticipanteController extends Controller
          return view('participantes.index',['participantes'=>$participantes]);
     }
 
-    public function destroy(Participante $participante,Request $request){
-        $this->validate($request,[
-            'deleted_at'=>'required'
-        ]);
-        $participante->update([
-            'deleted_at'=>$request->deleted_at,
-        ]);
-        $participantes=Participante::all();
-        return view('participantes.index',['participantes'=>$participantes]);
+    public function destroy(Participante $participante) {
+        $participante->delete();
+        return redirect()->route('participantes.index');
     }
+//    public function destroy(Participante $participante,Request $request){
+//        $this->validate($request,[
+//            'deleted_at'=>'required'
+//        ]);
+//        $participante->update([
+//            'deleted_at'=>$request->deleted_at,
+//        ]);
+//        $participantes=Participante::all();
+//        return view('participantes.index',['participantes'=>$participantes]);
+//    }
 
 //    public function destroy(Participante $participante){
 //        $participante->delete();

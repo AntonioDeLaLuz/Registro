@@ -29,8 +29,14 @@ class AdminController extends Controller
 
     public function adminEventos()
     {
-        $eventos = Evento::all();
+        $eventos = Evento::whereNull('deleted_at')->get();
         return view('admin.eventos', ['eventos' => $eventos]);
+    }
+
+    public function adminGestionEventos()
+    {
+        $eventos = Evento::all();
+        return view('admin.gestion_eventos', ['eventos' => $eventos]);
     }
 
     public function adminUsers()

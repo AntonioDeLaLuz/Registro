@@ -23,10 +23,6 @@
 
                               <a href="{{ route('eventos.edit',$evento)}}" class="text-xl text-white font-bold inline-block w-full mb-2 sm:mb-0 text-center bg-secundario p-2 rounded-md"><i class="fa-solid fa-pen fa-bounce sm:mr-2" style="color: #ffffff;"></i></a>
 
-                              <button wire:click="$emit('mostrarAlerta',{{$evento->id}})"
-                                class="text-white text-xl bg-red-500 font-bold flex w-full p-2 rounded-md  items-center justify-center">
-                                <i class="fa-solid fa-trash fa-bounce sm:mr-2" style="color: #ffffff;"></i>
-                                </button>
                     </div>
                 </td>
             </tr>
@@ -40,30 +36,4 @@
     </div>
 
 </div>
-@push('scripts')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    Livewire.on('mostrarAlerta', evento_id => {
-        Swal.fire({
-            title: '¿Eliminar evento?',
-            text: "Una publicación eliminada no se puede revertir",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Cancelar',
-            confirmButtonText: 'Si, eliminar!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                    // Eliminar Vacante
-                    Livewire.emit('eliminarEvento',evento_id);
-                    Swal.fire(
-                        'Se ha Eliminado el evento',
-                        'Eliminado correctamente',
-                        'success'
-                    )
-                }
-        });
-    });
-</script>
-@endpush
+

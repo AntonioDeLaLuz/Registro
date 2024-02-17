@@ -35,6 +35,11 @@
         position: fixed;
         width: 100%;
     }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 </style>
 <body class="bg-white    flex flex-col justify-between">
     <header class="p-5  bg-primario shadow">

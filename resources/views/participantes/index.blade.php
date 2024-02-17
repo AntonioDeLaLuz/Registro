@@ -14,7 +14,7 @@
             <table class="w-full">
                 <thead class="bg-primario ">
                     <tr>
-                        <th class="uppercase text-white p-2">ID</th>
+                        <th class="uppercase text-white p-2">N.</th>
                         <th class="uppercase text-white p-2">Nombre completo</th>
                         <th class="uppercase text-white p-2">Instituto</th>
                         <th class="uppercase text-white p-2">Nombre academico</th>
@@ -53,7 +53,7 @@
     @push('scripts')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        Livewire.on('mostrarAlerta', evento_id => {
+        Livewire.on('mostrarAlerta', participante_id => {
             Swal.fire({
                 title: '¿Eliminar evento?',
                 text: "Una publicación eliminada no se puede revertir",
@@ -66,7 +66,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                         // Eliminar Vacante
-                        Livewire.emit('eliminarEvento',evento_id);
+                        Livewire.emit('eliminarEvento',participante_id);
                         Swal.fire(
                             'Se ha Eliminado el evento',
                             'Eliminado correctamente',
