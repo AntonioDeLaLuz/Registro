@@ -36,9 +36,12 @@
         width: 100%;
     }
     footer {
-        position: fixed;
+        position: relative;
         bottom: 0;
         width: 100%;
+    }
+    main {
+        margin-bottom: 100px; /* Agregar un margen inferior para el pie de página */
     }
 </style>
 <body class="bg-white    flex flex-col justify-between">

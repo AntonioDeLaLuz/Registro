@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function adminGestionEventos()
     {
-        $eventos = Evento::all();
+        $eventos = Evento::withTrashed()->get();
         return view('admin.gestion_eventos', ['eventos' => $eventos]);
     }
 

@@ -59,11 +59,12 @@
             </div>
         </div>
         <div class="grid items-center">
-            <input type="submit" value="Registrar cuenta" class="uppercase font-bold bg-secundario border-none text-white py-6 px-8 mx-auto inline-block shadow-sm rounded-xl cursor-pointer">
+            <input type="submit" value="Registrar cuenta" class="uppercase font-bold bg-secundario border-none text-white py-6 px-8 mx-auto inline-block shadow-sm rounded-xl cursor-pointer mb-4">
         </div>
     </form>
     <div>
         <img src="{{ asset('img/Logo_itsx_color.png') }}" alt="Logo" class="max-h-30">
     </div>
 </div>
+<div class="mb-8"></div> <!-- Agrega espacio debajo del formulario -->
 @endsection
