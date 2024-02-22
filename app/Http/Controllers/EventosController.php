@@ -32,7 +32,7 @@ class EventosController extends Controller
             'title' => ' required | min:3 | max:255',
             'sub_title' => 'required | min:5 | max:255',
             'author' => 'required | min:5 | max:255',
-            'descripcion' => 'required | min:5 | max:255',
+            'descripcion' => 'required | min:5',
             'date' => 'required',
             'urlimg' => 'required'
         ]);
@@ -65,7 +65,7 @@ class EventosController extends Controller
             'title' => ' required | min:3 | max:255',
             'sub_title' => 'required | min:5 | max:255',
             'author' => 'required | min:5 | max:255',
-            'descripcion' => 'required | min:5 | max:255',
+            'descripcion' => 'required | min:5',
             'date' => 'required',
             'urlimg' => 'required'
         ]);
@@ -81,12 +81,4 @@ class EventosController extends Controller
         return redirect()->route('admin.eventos', ['eventos' => $eventos]);
     }
 
-//    public function eliminar( Evento $evento): \Illuminate\Http\RedirectResponse
-//    {
-//        $evento->update([
-//            'deleted_at' => now(), // Usa la función now() para obtener la fecha y hora actuales
-//        ]);
-//        $eventos=Evento::all();
-//        return redirect()->route('admin.eventos',['eventos'=>$eventos]);
-//    }
 }

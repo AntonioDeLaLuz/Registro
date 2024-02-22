@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class ParticipanteController extends Controller
 {
     //
-    public function index(){
+    public function index(Evento $evento){
         $participantes=Participante::all();
-        return view('participantes.index',['participantes'=>$participantes]);
+        return view('participantes.index',['participantes'=>$participantes,'evento' => $evento]);
     }
     public function create(Evento $evento){
         return view('participantes.create',['evento'=>$evento]);
@@ -88,22 +88,6 @@ class ParticipanteController extends Controller
         $participante->delete();
         return redirect()->route('participantes.index');
     }
-//    public function destroy(Participante $participante,Request $request){
-//        $this->validate($request,[
-//            'deleted_at'=>'required'
-//        ]);
-//        $participante->update([
-//            'deleted_at'=>$request->deleted_at,
-//        ]);
-//        $participantes=Participante::all();
-//        return view('participantes.index',['participantes'=>$participantes]);
-//    }
-
-//    public function destroy(Participante $participante){
-//        $participante->delete();
-//        $registers_event = Participante::all();
-//        return redirect()->route('admin.registerEvent', ['registers_event' => $registers_event]);
-//    }
 
     public function updateStatusValidateRegisterEvent(Participante $participante){
         $participante->update([

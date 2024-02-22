@@ -6,9 +6,9 @@
     <div class="mx-auto w-10/12">
         <div class="flex justify-end my-5">
             <a href="{{ route('admin.index') }}" class="bg-BotonesVolver uppercase font-bold border-none text-white py-6 px-10 mx-auto inline-block shadow-sm rounded-xl cursor-pointer"> Volver</a>
-            <a href="{{ route('participante.create') }}" class="font-bold bg-green-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Registar</a>
-            <a href="{{ route('list.assistants.preview.pdf') }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Ver lista</a>
-            <a href="{{ route('excel') }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Generar excel</a>
+            <a href="{{ route('participante.create',['evento' => $evento]) }}" class="font-bold bg-green-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Registar</a>
+            <a href="{{ route('list.assistants.preview.pdf',['evento' => $evento]) }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Ver lista</a>
+            <a href="{{ route('excel',['evento' => $evento]) }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Generar excel</a>
         </div>
         <div class="mt-5 sm:mt-0">
             <table class="w-full">

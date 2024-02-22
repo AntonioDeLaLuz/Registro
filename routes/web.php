@@ -66,13 +66,13 @@ Route::get('/catalogo', [EventosController::class,'index'])->name('eventos.catal
 Route::get('/invitation/preview/pdf',[ InvitationController::class,'previewInvitation'])->name('invitation.preview.pdf');
 Route::get('/invitation/send/pdf',[ InvitationController::class,'sendInvitation'])->name('invitation.send.pdf');
 
-Route::get('/list/assistants/preview/pdf',[ ListAssistantsController::class,'previewListAssistants'])->name('list.assistants.preview.pdf');
+Route::get('/evento/{evento}/participantes/list/assistants/preview/pdf',[ ListAssistantsController::class,'previewListAssistants'])->name('list.assistants.preview.pdf');
 
 // Excel
 Route::get('/export/list/assistants', [ListAssistantsExcelController::class, 'ListExportExcel'])->name('excel');
 
 // Participante
-Route::get('/participantes', [ParticipanteController::class,'index'])->name('participantes.index');
+Route::get('/evento/{evento}/participantes', [ParticipanteController::class,'index'])->name('participantes.index');
 Route::get('/participantes/Eliminar', [ParticipanteController::class,'destroy'])->name('participantes.destroy');
 Route::get('/participantes/registrar', [ParticipanteController::class,'create'])->name('participante.create');
 Route::post('/participantes/registrar', [ParticipanteController::class,'store']);

@@ -13,7 +13,7 @@ class MostrarGestionEventos extends Component
         $eventos = Evento::where('id', '>', 0)
             ->withTrashed()
             ->paginate(10);
-        return view('livewire.mostrar-eventos', [
+        return view('livewire.mostrar-gestion-eventos', [
             'eventos' => $eventos
         ]);
     }

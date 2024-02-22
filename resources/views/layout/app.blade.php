@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     {{-- Barra de estilos --}}
     @stack('styles')
-    <link rel="stylesheet" href="{{ asset('build/assets/app.295b19d5.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.bd914bcd.css') }}">
     {{-- <link rel="shortcut icon" href="{{ asset('img/favicon/') }}" type="image/x-icon"> --}}
     {{-- archivos js --}}
     <script src="{{ asset('build/assets/app.9449d640.js') }}" defer></script>
@@ -49,16 +49,17 @@
         <!-- navbar-->
         <nav class="flex justify-between items-center lg:justify-center gap-6">
             <a href="{{ route('index') }}"
-                class="text-center text-white font-bold text-3xl no-underline flex items-center gap-2"> <svg
+{{--                class="text-center text-white font-bold text-3xl no-underline flex items-center gap-2"> <svg--}}
+                class="text-center text-white text-3xl no-underline flex items-center gap-2"> <svg
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
-            </a>
+            Inicio</a>
             <div class="menu lg:hidden"><i class="fa-solid fa-bars" style="color: #f2f2f2;"></i></div>
             <a href="{{ route('pages.eventos') }}"
-                class="text-center text-white font-bold text-3xl no-underline hidden lg:flex items-center gap-2">
+                class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -68,21 +69,21 @@
             @auth
                 @if (auth()->user()->type == 2)
                     <a href="{{ route('admin.index') }}"
-                        class="text-center text-white font-bold text-3xl no-underline hidden lg:flex items-center gap-2">
+                        class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2">
                         <i class="fa-solid fa-gear  hover:fa-spin" style="color: #fff;"></i>
                         Administración</a>
                 @endif
                 <form method="POST" action="{{ route('register.logout') }}" class="hidden lg:flex items-center gap-2">
                     @csrf
                     <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;" class="text-3xl"></i>
-                    <button type="submit" class=" flex text-white text-3xl  font-bold cursor-pointer ">
+                    <button type="submit" class=" flex text-white text-3xl  cursor-pointer ">
                         Cerrar sesión</button>
                 </form>
             @endauth
 
             @guest
                 <a href="{{ route('register.login') }}"
-                    class="text-center text-white font-bold text-3xl no-underline hidden lg:flex items-center gap-2 ">
+                    class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8">
                         <path stroke-linecap="round" stroke-linejoin="round"

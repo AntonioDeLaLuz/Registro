@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Export;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Exports\ListExportExcel;
+use App\Models\Evento;
+
 class ListAssistantsExcelController extends Controller
 {
     /**
@@ -12,10 +14,10 @@ class ListAssistantsExcelController extends Controller
      *
      * @return Response
      */
-    public function ListExportExcel()
+    public function ListExportExcel(Evento $evento)
     {
-
-        return Excel::download(new ListExportExcel, 'Lista.xlsx');
-
+        info($evento);
+        // Generar el archivo Excel
+        return Excel::download(new ListExportExcel($evento), 'Lista.xlsx');
     }
 }

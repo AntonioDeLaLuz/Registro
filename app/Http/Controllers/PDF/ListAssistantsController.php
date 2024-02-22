@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PDF;
 
+use App\Models\Evento;
 use App\Models\Participante;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,9 +16,12 @@ use Barryvdh\DomPDF\Facade\Pdf as PDFFacade;
 class ListAssistantsController extends Controller
 {
     //
-    public function previewListAssistants(): Response
+    public function previewListAssistants(Evento $evento): Response
     {
-        $participiants =DB::table('participantes')->orderBy('instituto')->get();
+        $participiants =DB::table('participantes')
+            ->where('evento_id', $evento->id)
+            ->orderBy('instituto')
+            ->get();
 
         $pdf_file = PDFFacade::loadView(
             'pdf.listAssistants.template',
