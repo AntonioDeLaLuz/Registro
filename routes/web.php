@@ -73,11 +73,12 @@ Route::get('/export/list/assistants', [ListAssistantsExcelController::class, 'Li
 
 // Participante
 Route::get('/evento/{evento}/participantes', [ParticipanteController::class,'index'])->name('participantes.index');
-Route::get('/participantes/Eliminar', [ParticipanteController::class,'destroy'])->name('participantes.destroy');
-Route::get('/participantes/registrar', [ParticipanteController::class,'create'])->name('participante.create');
-Route::post('/participantes/registrar', [ParticipanteController::class,'store']);
-Route::get('/participantes/{participante}/edit',[ ParticipanteController::class,'edit'])->name('participante.edit');
+Route::delete('/participantes/{participante}', [ParticipanteController::class,'destroy'])->name('participantes.destroy'); // Cambiado a método DELETE
+Route::get('/evento/{evento}/participantes/registrar', [ParticipanteController::class,'create'])->name('participantes.create'); // Cambiado a participantes.create
+Route::post('/evento/{evento}/participantes/registrar', [ParticipanteController::class,'store']);
+Route::get('/participantes/{participante}/edit',[ ParticipanteController::class,'edit'])->name('participantes.edit'); // Cambiado a participantes.edit
 Route::post('/participantes/{participante}/edit',[ ParticipanteController::class,'update']);
+
 
 
 Route::post('/inscripcion-eventos/validar/registro/evento/{register_event}',[ ParticipanteController::class,'updateStatusValidateRegisterEvent'])->name('participante.validate');

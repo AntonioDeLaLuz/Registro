@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 class ParticipanteController extends Controller
 {
     //
-    public function index(Evento $evento){
-        $participantes=Participante::all();
-        return view('participantes.index',['participantes'=>$participantes,'evento' => $evento]);
+    public function index(Evento $evento)
+    {
+        // Obtener solo los participantes asociados al evento específico
+        $participantes = Participante::where('evento_id', $evento->id)->get();
+
+        return view('participantes.index', [
+            'participantes' => $participantes,
+            'evento' => $evento
+        ]);
     }
     public function create(Evento $evento){
         return view('participantes.create',['evento'=>$evento]);
@@ -43,7 +49,7 @@ class ParticipanteController extends Controller
             'grade_academico'=>$request->grade_academico,
             'area'=>$request->area
          ]);
-        return redirect()->route('participantes.index');
+        return redirect()->route('participantes.index', ['evento' => $evento]);
 
         //  regresar a la pagina anterior
 //      return view('evento.profile',['evento'=>evento->id]);
@@ -51,11 +57,14 @@ class ParticipanteController extends Controller
 //        return redirect()->route('pages.eventos');
     }
 
-    public function edit(Participante $participante){
-        return view('participantes.edit',['participante'=>$participante]);
+    public function edit(Participante $participante,Evento $evento){
+        return view('participantes.edit', [
+            'participante' => $participante,
+            'evento' => $evento
+        ]);
     }
 
-    public function update(Participante $participante,Request $request){
+    public function update(Request $request, Participante $participante,Evento $evento){
         $this->validate($request,[
             'name'=>' required | min:3',
             'lastname_p'=>'',
@@ -80,13 +89,12 @@ class ParticipanteController extends Controller
             'grade_academico'=>$request->grade_academico,
             'area'=>$request->area
          ]);
-         $participantes=Participante::all();
-         return view('participantes.index',['participantes'=>$participantes]);
+        return redirect()->route('participantes.index', ['evento' => $evento]);
     }
 
     public function destroy(Participante $participante) {
         $participante->delete();
-        return redirect()->route('participantes.index');
+        return redirect()->route('participantes.index', ['evento' => $participante->evento]);
     }
 
     public function updateStatusValidateRegisterEvent(Participante $participante){

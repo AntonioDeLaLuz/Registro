@@ -6,7 +6,7 @@
     <div class="mx-auto w-10/12">
         <div class="flex justify-end my-5">
             <a href="{{ route('admin.index') }}" class="bg-BotonesVolver uppercase font-bold border-none text-white py-6 px-10 mx-auto inline-block shadow-sm rounded-xl cursor-pointer"> Volver</a>
-            <a href="{{ route('participante.create',['evento' => $evento]) }}" class="font-bold bg-green-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Registar</a>
+            <a href="{{ route('participantes.create',['evento' => $evento]) }}" class="font-bold bg-green-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Registar</a>
             <a href="{{ route('list.assistants.preview.pdf',['evento' => $evento]) }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Ver lista</a>
             <a href="{{ route('excel',['evento' => $evento]) }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer " target="_blank">Generar excel</a>
         </div>
@@ -34,9 +34,10 @@
                     <td>
                         <div class="sm:grid  sm:grid-cols-2  gap-5">
 
-                                  <a href="{{ route('participante.edit',$participante)}}" class="text-xl text-white font-bold inline-block w-full mb-2 sm:mb-0 text-center bg-secundario p-2 rounded-md"><i class="fa-solid fa-pen fa-bounce sm:mr-2" style="color: #ffffff;"></i></a>
+                            <a href="{{ route('participantes.edit', ['evento' => $evento,'participante' => $participante]) }}" class="text-xl text-white font-bold inline-block w-full mb-2 sm:mb-0 text-center bg-secundario p-2 rounded-md"><i class="fa-solid fa-pen fa-bounce sm:mr-2" style="color: #ffffff;"></i></a>
 
-                                  <button wire:click="$emit('mostrarAlerta',{{$participante->id}})"
+
+                            <button wire:click="$emit('mostrarAlerta',{{$participante->id}})"
                                     class="text-white text-xl bg-red-500 font-bold flex w-full p-2 rounded-md  items-center justify-center">
                                     <i class="fa-solid fa-trash fa-bounce sm:mr-2" style="color: #ffffff;"></i>
                                     </button>
@@ -48,36 +49,7 @@
 
         </table>
 
-
-    </div>
-    @push('scripts')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Livewire.on('mostrarAlerta', participante_id => {
-            Swal.fire({
-                title: '¿Eliminar evento?',
-                text: "Una publicación eliminada no se puede revertir",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Si, eliminar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                        // Eliminar Vacante
-                        Livewire.emit('eliminarEvento',participante_id);
-                        Swal.fire(
-                            'Se ha Eliminado el evento',
-                            'Eliminado correctamente',
-                            'success'
-                        )
-                    }
-            });
-        });
-    </script>
-    @endpush
-
+        </div>
 
     </div>
 @endsection

@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function adminGestionEventos()
     {
-        $eventos = Evento::withTrashed()->get();
+        $eventos = Evento::whereNull('deleted_at')->get();
         return view('admin.gestion_eventos', ['eventos' => $eventos]);
     }
 
