@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     {{-- Barra de estilos --}}
     @stack('styles')
-    <link rel="stylesheet" href="{{ asset('build/assets/app.85d934c3.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.25aa1ea4.css') }}">
     {{-- <link rel="shortcut icon" href="{{ asset('img/favicon/') }}" type="image/x-icon"> --}}
     {{-- archivos js --}}
     <script src="{{ asset('build/assets/app.9449d640.js') }}" defer></script>
@@ -47,51 +47,55 @@
 <body class="bg-white    flex flex-col justify-between">
     <header class="p-5  bg-primario shadow">
         <!-- navbar-->
-        <nav class="flex justify-between items-center lg:justify-center gap-6">
-            <a href="{{ route('index') }}"
-{{--                class="text-center text-white font-bold text-3xl no-underline flex items-center gap-2"> <svg--}}
-                class="text-center text-white text-3xl no-underline flex items-center gap-2"> <svg
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>
-            Inicio</a>
-            <div class="menu lg:hidden"><i class="fa-solid fa-bars" style="color: #f2f2f2;"></i></div>
-            <a href="{{ route('pages.eventos') }}"
-                class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                </svg>
-                Eventos</a>
-            @auth
-                @if (auth()->user()->type == 2)
-                    <a href="{{ route('admin.index') }}"
-                        class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2">
-                        <i class="fa-solid fa-gear  hover:fa-spin" style="color: #fff;"></i>
-                        Administración</a>
-                @endif
-                <form method="POST" action="{{ route('register.logout') }}" class="hidden lg:flex items-center gap-2">
-                    @csrf
-                    <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;" class="text-3xl"></i>
-                    <button type="submit" class=" flex text-white text-3xl  cursor-pointer ">
-                        Cerrar sesión</button>
-                </form>
-            @endauth
 
-            @guest
-                <a href="{{ route('register.login') }}"
-                    class="text-center text-white text-3xl no-underline hidden lg:flex items-center gap-2 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-8 h-8">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                    </svg>
-                    Iniciar sesión</a>
-            @endguest
+        <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+{{--                    <img src="{{ asset('public/img/Logo_itsx_blanco_peque.png') }}" class="h-8" alt="TecRegistra Logo">--}}
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TecRegistra</span>
+                </a>
+                <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                    @auth
+                        <!-- Si el usuario está autenticado, mostrar el botón de cerrar sesión -->
+                        <form method="POST" action="{{ route('register.logout') }}">
+                            @csrf
+                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cerrar Sesión</button>
+                        </form>
+                    @endauth
+                    @guest
+                        <!-- Si el usuario no está autenticado, mostrar el botón de iniciar sesión -->
+                        <a href="{{ route('register.login') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Iniciar Sesión</a>
+                    @endguest
+                    <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="{{ route('index') }}" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pages.eventos') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pages.eventos') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Galería</a>
+                        </li>
+                        @auth
+                            @if (auth()->user()->type == 2)
+                                <li>
+                                    <a href="{{ route('admin.index') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Administración</a>
+                                </li>
+                            @endif
+                        @endauth
+                    </ul>
+                </div>
+            </div>
         </nav>
+
         <!--final de la navbar-->
     </header>
     <main class="">

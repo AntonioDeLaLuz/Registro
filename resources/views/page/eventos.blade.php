@@ -3,7 +3,7 @@
     Eventos
 @endsection
 @section('contenido')
-    <h3 class="text-cPrimario text-5xl uppercase ml-10 text-center my-5">Eventos</h3>
+    <h3 class="bg-titulo px-12 py-6 mt-10 text-cPrimario font-bold text-4xl text-center">Eventos</h3>
     @forelse ( $eventos as $evento)
         <div class="bg-cPrimario px-5 py-6 w-10/12 mt-8 container mx-auto rounded-lg">
             <div class="flex justify-between relative">

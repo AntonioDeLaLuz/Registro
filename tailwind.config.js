@@ -25,6 +25,8 @@ module.exports = {
         'cPrimario':'#00243b',
         'cSecundario':'#dbc613',
         'cTerciario': '#807E82',
+
+
       },
     },
   },
