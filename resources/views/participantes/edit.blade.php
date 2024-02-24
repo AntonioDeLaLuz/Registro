@@ -121,7 +121,7 @@
         </div>
         <div></div>
         <div class="flex items-center justify-center w-10/12 mx-auto">
-{{--            <a href="{{ route('participantes.index',['evento' => $evento]) }}" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Volver</a>--}}
+            <a href="javascript:history.back()" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Volver</a>
 
             <input type="submit" value="Actualizar" class="font-bold bg-secundario border-none text-white py-4 px-8 mx-auto inline-block shadow-sm rounded-md text-2xl hover:cursor-pointer">
         </div>

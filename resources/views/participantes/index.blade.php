@@ -50,7 +50,7 @@
         </table>
 
         </div>
-
+        <livewire:mostrar-eventos>
     </div>
 @endsection
 

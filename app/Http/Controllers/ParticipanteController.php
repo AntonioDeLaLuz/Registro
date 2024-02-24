@@ -89,7 +89,7 @@ class ParticipanteController extends Controller
             'grade_academico'=>$request->grade_academico,
             'area'=>$request->area
          ]);
-        return redirect()->route('participantes.index', ['evento' => $evento]);
+        return redirect()->route('admin.gestion_eventos');
     }
 
     public function destroy(Participante $participante) {

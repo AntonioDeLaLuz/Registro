@@ -22,7 +22,7 @@
                 <td>
                     <div class="sm:grid  sm:grid-cols-2  gap-5">
 
-                        <a href="{{ route('participantes.edit', ['evento' => $evento,'participante' => $participante]) }}" class="text-xl text-white font-bold inline-block w-full mb-2 sm:mb-0 text-center bg-secundario p-2 rounded-md"><i class="fa-solid fa-pen fa-bounce sm:mr-2" style="color: #ffffff;"></i></a>
+                        <a href="javascript:history.back()" class="font-bold bg-blue-500 border-none text-white py-4 px-8 mx-auto block shadow-sm rounded-md text-2xl hover:cursor-pointer">Volver</a>
 
 
                         <button wire:click="$emit('mostrarAlerta',{{$participante->id}})"
