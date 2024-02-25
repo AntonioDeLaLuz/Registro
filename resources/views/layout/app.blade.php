@@ -8,6 +8,7 @@
     {{-- Barra de estilos --}}
     @stack('styles')
     <link rel="stylesheet" href="{{ asset('build/assets/app.d15b76ef.css') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon/Logo_itsx_color.ico') }}" type="image/x-icon">
     {{-- <link rel="shortcut icon" href="{{ asset('img/favicon/') }}" type="image/x-icon"> --}}
     {{-- archivos js --}}
     <script src="{{ asset('build/assets/app.9449d640.js') }}" defer></script>
@@ -45,13 +46,13 @@
     }
 </style>
 <body class="bg-white    flex flex-col justify-between">
-    <header class="p-8 ">
+
         <!-- navbar-->
 
         <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-{{--                    <img src="{{ asset('public/img/Logo_itsx_blanco_peque.png') }}" class="h-8" alt="TecRegistra Logo">--}}
+                    <img src="{{ asset('img/Logo_itsx_blanco_peque.png') }}" class="h-8" alt="TecRegistra Logo">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TecRegistra</span>
                 </a>
                 <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -97,13 +98,14 @@
         </nav>
 
         <!--final de la navbar-->
-    </header>
-    <main class="">
+
+    <main class="mt-16"> <!-- Ajusta el margen superior para que sea igual o mayor a la altura de la barra de navegación (16rem en este caso) -->
         {{-- Contenedor del menu de barra --}}
         <section class="hero"></section>
 
         @yield('contenido')
     </main>
+
     <footer class="bg-primario py-2 mt-10">
         <div class="container mx-auto grid md:grid-cols-5 gap-5 mt-10">
             <div class="col-span-2">
@@ -123,19 +125,38 @@
                 </div>
             </div>
             <div class="col-span-2">
-                <h3 class=" text-white mb-3 text-2xl font-bold text-center  my-2">Redes sociales</h3>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="bg-CafeBTN  px-3 py-2 rounded-xl ">
-                        <img src="{{ asset('img/logoFacebook-removebg-preview (1).png') }}" class="w-8 h-8 mx-auto" alt="">
-                    </div>
-                    <div class="bg-CafeBTN  px-5 py-3 rounded-xl">
-                        <img src="{{ asset('img/insta.png') }}" class="w-8 h-8 mx-auto" alt="">
-                    </div>
-                    <div class="bg-CafeBTN  px-5 py-3 rounded-xl">
-                        <img src="{{ asset('img/whats.png') }}" class="w-8 h-8 mx-auto" alt="">
-                    </div>
+                <h3 class="text-white mb-3 text-2xl font-bold text-center my-2">Redes sociales</h3>
+                <div class="flex justify-center items-center mt-6">
+                    <a href="https://twitter.com/itsxalapa?lang=es" target="_blank" class="inline-block">
+                        <button
+                            class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                            type="button"
+                            style="margin-right: 10px;"
+                        >
+                            <i class="flex items-center justify-center fab fa-twitter" style="width: 100%; height: 100%;"></i>
+                        </button>
+                    </a>
+                    <a href="https://www.facebook.com/ITSXalapa/" target="_blank" class="inline-block">
+                        <button
+                            class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                            type="button"
+                            style="margin-right: 10px;"
+                        >
+                            <i class="flex items-center justify-center fab fa-facebook-square" style="width: 100%; height: 100%;"></i>
+                        </button>
+                    </a>
+                    <a href="https://www.youtube.com/user/ITSXalapa/feed" target="_blank" class="inline-block">
+                        <button
+                            class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                            type="button"
+                            style="margin-right: 10px;"
+                        >
+                            <i class="flex items-center justify-center fab fa-youtube" style="width: 100%; height: 100%;"></i>
+                        </button>
+                    </a>
                 </div>
-                <img class="h- 25 mx-auto" src="{{ asset('img/Logo_itsx_blanco_peque.png') }}" alt="">
+
+                <img class="h-25 mx-auto mt-4" src="{{ asset('img/Logo_itsx_blanco_peque.png') }}" alt="">
             </div>
         </div>
 

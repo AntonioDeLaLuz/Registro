@@ -82,7 +82,7 @@
                                 </div>
                                 <h6 class="text-xl font-semibold">Tecnología</h6>
                                 <p class="mt-2 mb-4 text-gray-600">
-                                    Avance y mejora en la sociedad.
+                                    Innovación y creación.
                                 </p>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                 </div>
                                 <h6 class="text-xl font-semibold">Cultura</h6>
                                 <p class="mt-2 mb-4 text-gray-600">
-                                    Avance y mejora en la sociedad.
+                                    Cultivación y promoción de nuestros bienes.
                                 </p>
                             </div>
                         </div>
