@@ -203,7 +203,7 @@
                             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
                         >
                             <figure class="relative max-w-md transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-                                <a href="{{ route('pages.eventos') }}">
+                                <a href="{{ route('gallery.index') }}">
                                     <img class="rounded-lg" src="{{ asset('upload/eventos.jpg') }}" alt="image description">
                                 </a>
                                 <figcaption class="absolute px-4 text-xl text-white bottom-6">

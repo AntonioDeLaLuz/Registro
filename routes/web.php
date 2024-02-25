@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\LikeController;
@@ -79,6 +80,7 @@ Route::post('/evento/{evento}/participantes/registrar', [ParticipanteController:
 Route::get('/participantes/{participante}/edit',[ ParticipanteController::class,'edit'])->name('participantes.edit'); // Cambiado a participantes.edit
 Route::post('/participantes/{participante}/edit',[ ParticipanteController::class,'update']);
 
-
+// Galeria
+Route::get('/galeria',[ GalleryController::class,'index'])->name('gallery.index');
 
 Route::post('/inscripcion-eventos/validar/registro/evento/{register_event}',[ ParticipanteController::class,'updateStatusValidateRegisterEvent'])->name('participante.validate');
