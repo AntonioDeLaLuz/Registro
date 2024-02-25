@@ -1,5 +1,7 @@
 @extends('layout.app')
-
+@section('title')
+    TecRegistra
+@endsection
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
@@ -155,7 +157,7 @@
                     </div>
                     <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
                         <div
-                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
+                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-yellow-600"
                         >
                             <img
                                 alt="..."

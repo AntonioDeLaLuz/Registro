@@ -3,9 +3,8 @@
     {{ $evento->title }}
 @endsection
 @section('contenido')
-    <div class="grid md:grid-cols-2 gap-10 container mx-auto w-10/12 my-5">
+    <div class="mt-10 grid md:grid-cols-2 gap-10 container mx-auto w-10/12 my-5">
         <div class="md:col-span-2">
-            <h2 class="block text-4xl font-bold text-center mb-5 text-cPrimario">{{ $evento->title }}</h2>
             <div class="grid md:grid-cols-2 gap-5">
                 {{-- Imgaen --}}
                 <div>
@@ -16,7 +15,8 @@
                 </div>
 
                 <div class="p-5">
-                    <p class="text-center text-2xl my-3 ">{{ $evento->sub_title }}</p>
+                    <h2 class="block text-4xl font-bold text-center mb-5 text-cPrimario">{{ $evento->title }}</h2>
+                    <p class="block text-center text-2xl my-4 ">{{ $evento->sub_title }}</p>
                     <div class="mt-16">
 
                         {{--                        <p class="text-justify text-xl">Autor: {{ $evento->author }}</p>--}}
@@ -38,7 +38,8 @@
                             <div class="mt-10">
                                 <h4 class="block text-3xl font-bold text-center mb-5 text-cPrimario">Inscribirse ahora</h4>
                                 <div class="grid place-items-center">
-                                      <p>Para inscribirte, necesitas estar autenticado.</p>
+                                      <p>Para inscribirte, necesitas iniciar sesion.</p>
+                                        <p>Para más información tec_registro@gmail.com</p>
                                 </div>
                             </div>
                         @endguest

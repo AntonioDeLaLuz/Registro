@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     {{-- Barra de estilos --}}
     @stack('styles')
-    <link rel="stylesheet" href="{{ asset('build/assets/app.25aa1ea4.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.d15b76ef.css') }}">
     {{-- <link rel="shortcut icon" href="{{ asset('img/favicon/') }}" type="image/x-icon"> --}}
     {{-- archivos js --}}
     <script src="{{ asset('build/assets/app.9449d640.js') }}" defer></script>
@@ -45,7 +45,7 @@
     }
 </style>
 <body class="bg-white    flex flex-col justify-between">
-    <header class="p-5  bg-primario shadow">
+    <header class="p-8 ">
         <!-- navbar-->
 
         <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -104,17 +104,15 @@
 
         @yield('contenido')
     </main>
-
-
     <footer class="bg-primario py-2 mt-10">
-        <div class="container mx-auto grid md:grid-cols-5 gap-5">
+        <div class="container mx-auto grid md:grid-cols-5 gap-5 mt-10">
             <div class="col-span-2">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.906711496011!2d-96.88233098512036!3d19.50264898684455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db324c8ce295c7%3A0x4da58d2adc774de0!2sInstituto%20Tecnol%C3%B3gico%20Superior%20de%20Xalapa!5e0!3m2!1ses-419!2smx!4v1664514164837!5m2!1ses-419!2smx"
                     class="w-full h-80" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="">
+            <div class="mt-10">
                 <div class="py-10">
                     <p class="mb-3 text-white text-center md:text-left text-4xl">Ubicación</p>
                     <div class="p-5">
@@ -125,6 +123,19 @@
                 </div>
             </div>
             <div class="col-span-2">
+                <h3 class=" text-white mb-3 text-2xl font-bold text-center  my-2">Redes sociales</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-CafeBTN  px-3 py-2 rounded-xl ">
+                        <img src="{{ asset('img/logoFacebook-removebg-preview (1).png') }}" class="w-8 h-8 mx-auto" alt="">
+                    </div>
+                    <div class="bg-CafeBTN  px-5 py-3 rounded-xl">
+                        <img src="{{ asset('img/insta.png') }}" class="w-8 h-8 mx-auto" alt="">
+                    </div>
+                    <div class="bg-CafeBTN  px-5 py-3 rounded-xl">
+                        <img src="{{ asset('img/whats.png') }}" class="w-8 h-8 mx-auto" alt="">
+                    </div>
+                </div>
+                <img class="h- 25 mx-auto" src="{{ asset('img/Logo_itsx_blanco_peque.png') }}" alt="">
             </div>
         </div>
 
