@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: tec_registro
 -- ------------------------------------------------------
@@ -49,6 +49,39 @@ LOCK TABLES `comentarios` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `eventos`
+--
+
+DROP TABLE IF EXISTS `eventos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `eventos` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sub_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `urlimg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `eventos_name_unique` (`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `eventos`
+--
+
+LOCK TABLES `eventos` WRITE;
+/*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
+INSERT INTO `eventos` VALUES (1,'1er Encuentro de cuerpos academicos','Acercando la Tecnología a la Sustentabilidad','Tecnológico de Xalapa','¡Mañana es el gran día! ? No te pierdas el emocionante evento organizado por el CA ITESXAL-CA-4 Ingeniería e Innovación Sustentable y la Facultad de Biología de la Universidad Veracruzana. ?? Estamos listos para explorar juntos el fascinante mundo de la innovación sustentable. ¡Acompáñanos y sé parte de esta experiencia única! ?','2024-01-11','9f5be176-26e5-48f5-99fd-fd1d25825f83.png','2023-11-20 11:29:37','2024-02-22 07:54:48',NULL),(7,'Este es otro evento de prueba','Este es otro evento de prueba','Este es otro evento de prueba','Este es otro evento de prueba','2024-02-22','5ed15a54-7e50-4283-a354-192e891baec8.jpg','2024-02-18 05:31:33','2024-02-22 08:26:51',NULL);
+/*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -95,7 +128,7 @@ CREATE TABLE `likes` (
   KEY `likes_eventos_id_foreign` (`evento_id`),
   CONSTRAINT `likes_eventos_id_foreign` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`) ON DELETE CASCADE,
   CONSTRAINT `likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,10 +137,49 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-INSERT INTO `likes` VALUES (1,1,1,'2023-11-21 01:29:51','2023-11-21 01:29:51');
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `participantes`
+--
+
+DROP TABLE IF EXISTS `participantes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `participantes` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `evento_id` bigint NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname_p` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname_m` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `email_institucional` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_personal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instituto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_academico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grade_academico` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `area` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `participantes_user_id_foreign` (`user_id`),
+  KEY `participantes_eventos_id_foreign` (`evento_id`),
+  CONSTRAINT `participantes_eventos_id_foreign` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `participantes`
+--
+
+LOCK TABLES `participantes` WRITE;
+/*!40000 ALTER TABLE `participantes` DISABLE KEYS */;
+INSERT INTO `participantes` VALUES (3,0,1,'','','Emilio Alfonso Suárez Domínguez, Angelina Ruíz Sánchez, Pascual Linares Márquez, Ibiza Martínez Serrano, Julliana Barretto, Rodolfo Martínez Mota, Eliezer Cocoletzi Vázquez.','emisuarez@uv.mx','emisuarez@uv.mx','2281785858','UV','UV-CA-491 Conservación de Vertebrados Silvestres y su Ambiente','CAEF','Gestión ambiental','2024-01-11 21:00:13','2024-02-22 14:31:07',NULL),(4,0,1,'','','Gerardo Meza Flores, Luis Roberto González Grovas, Felipe Dey García, Salvador Herrera Velarde, Lina Rodríguez Ramos','gerardo.mf@xalapa.tecnm.mx','gerardo_mflores@yahoo.com.mx','2281323912','ITS Xalapa','ITESXAL-CA-06 Sustentabilidad Industrial','CAEF','Tecnología sustentable','2024-01-11 21:02:34','2024-01-12 02:07:41',NULL),(5,0,1,'','','Daniel Bello Parra, Alberto Ceballos, Olga Yaneth Chang Espinosa, Luis de Jesús Montero García, Félix Murrieta Domínguez','daniel.bello@perote.tecnm.mx','daniel.bello@perote.tecnm.mx','2288358082','ITS Perote','ITESPE-CA-4 Procesos Industriales','CAEC','Sistemas de Géstión','2024-01-11 21:05:13','2024-01-12 02:26:33',NULL),(6,0,1,'','','Lilia Ortíz Rodríguez, Omar Ríos Romero, Nora Isela Ruiz Colorado, Jorge Alberto Pineda Posadas','doc-035@itsperote.edu.mx','mc.ortizlilia@gmail.com','2281716671','ITS Perote','ITESPE-CA-6 Biotecnología y Agroforestería Aplicada','CAEF','Salud y sustentabilidad','2024-01-11 21:05:56','2024-01-12 02:54:39',NULL),(7,0,1,'',' ','Leandro Chaires Martinez, Héctor Alejandro Jiménez Ávalos, Miguel Alberto Pérez Vargas','leandro.cm@alamo.tecnm.mx','leandrochaires@yahoo.com.mx','7831420967','ITS Álamo','ITESAT-CA-1 Biotecnología Alimentaria','CAEC','Tecnología sustentable','2024-01-11 21:08:26','2024-01-11 21:08:26',NULL),(8,0,1,'','','Virginia Lagunes Barradas, Rosalía Daza Merino, Erika María Ronquillo Mandujano, Lilia Licea Hernández, María Margarita González de la Tijera, Lorena Guzmán Rodríguez, Margarita del Carmen Torres Morales','virginia.lb@xalapa.tecnm.mx','viclag@hotmail.com','2281775378','ITS Xalapa','ITESXAL-CA-3 Sistemas Integrales para el Desarrollo de Tecnología Aplicada','CAEF','Tecnología sustentable','2024-01-11 21:11:23','2024-01-12 01:13:26',NULL),(9,0,1,'','','Elizabeth Valero Pacheco, Oscar Méndez, Joaquín Jiménez Huerta, Clementina Barrera Bernal, José Ricardo Barradas Barradas, Eric Isaí Ameca y Juárez, Antonio Luna Díaz Peón, Antonio Heriberto Maruri García.','evalero@uv.mx','evalero@uv.mx','2281225792','UV','UV-CA-19 Calidad Ambiental','CAC','Gestión ambiental','2024-01-11 21:13:59','2024-01-12 02:12:13',NULL),(11,0,1,'','','Dulce María Martínez Angeles, Sagrario Alejandre Apolinar, Rodrigo González Ramírez','dulcemaria.ma@libres.tecnm.mx','dulcemaria.ma@libres.tecnm.mx','2761161450','ITS Libres','CA-ITSLIBRES-2 Gestión de Procesos Económicos Administrativos para el Desarrollo Regional','CAEF','Sistemas de Géstión','2024-01-11 21:18:28','2024-01-12 02:43:31',NULL),(13,0,1,'','','Ignacio Garay Peralta, Alfredo Díaz Criollo, Leira Carol Escudero Ramírez, Jesús Herrera Alarcón, Luis Alberto Montes Gutiérrez.','ignacio.gp@ugalvan.tecnm.mx','ignacio.gp@ugalvan.tecnm.mx','2281364964','IT Úrsulo Galván','ITURG-CA-3 Estrategias Agropecuarias, Ambientales, Fisicoquímicas y Educativas para el Desarrollo Sustentable','CAEC','Salud y sustentabilidad','2024-01-11 21:32:55','2024-01-12 02:41:46',NULL),(14,0,1,'','','Jacel Adame García, Adriana Elena Rivera Meza, Félix David Murillo Cuevas, José Antonio Fernández Viveros, Jazmín Villegas Narváez','jacel.ag@ugalvan.tecnm.mx','dra.adame.garcia@gmail.com','2281694561','IT Úrsulo Galván','ITURG-CA-1 Biodiversidad, Biotecnología, Medio Ambiente e Innovación Tecnológica','CAEC','Tecnología sustentable','2024-01-11 21:32:59','2024-01-11 21:32:59',NULL),(15,0,1,'','','Octavio Augusto García Alarcón, Maria Salome Alejandre Apolinar, Hugo Amores Perez, Irma Angelica García Gonzalez','octavio.garcia@itsx.edu.mx','octavio.garcia@itsx.edu.mx','6642524118','ITS Xalapa','ITSXAL-CA-4 Ingeniería e Innovación Sustentable.','CAEF','Tecnología sustentable','2024-01-11 21:35:47','2024-01-12 02:49:50',NULL),(16,0,1,'','','Fabiola Lango Reynoso, María del Refugio Castañeda Chávez, Isabel Araceli Amaro Espejo, Jesús Montoya Mendoza','jesusmontoya@bdelrio.tecnm.mx','jesusmontoya@bdelrio.tecnm.mx','2293036898','IT de Boca del Río','ITBOR-CA-2 Manejo de Recursos Costeros y Ciencias Ambientales','CAC','Gestión ambiental','2024-01-11 21:38:16','2024-01-12 02:44:10',NULL),(17,0,1,'','','Fabiola Sandoval Salas, Carlos Méndez Carreto, Graciela Ortega Avila','doc-200@itsperote.edu.mx','investiga.itspe@gmail.com','22821035973','ITS Perote','ITESPE-CA-3 Procesos Agroindustriales y Bioenergía','CAEC','Tecnología sustentable','2024-01-11 21:38:29','2024-01-12 02:44:43',NULL),(18,0,1,'','','Francisco Enrique Cab Jiménez, Israel Robles Hernández, Isabel Lagunes Gómez, Israel Viveros Torres, Josimar Muñoz Delgado, Francisco Torres Andrade','israelrh@alvarado.tecnm.mx','israelrobles2013@gmail.com','2292197351','ITS Álvarado','ITESAL-CA-4 Procesos e Ingeniería y Desarrollo','CAEF','Tecnología sustentable','2024-01-11 21:44:09','2024-01-12 01:51:32',NULL),(19,0,1,'','','Mariana Lobato Báez, Martha Irene Bello Ramírez, Guillermo Córdova Morales','martha.beram@gmail.com','martha.beram@gmail.com','2221343491','ITS Libres','ITESLIBRES-CA-1 Tecnologías Emergentes en los Procesos Educativos','CAEF','Sistemas de Géstión','2024-01-11 22:02:42','2024-01-12 02:45:06',NULL),(20,0,1,'','','Micloth López del Castillo Lozano, Carmen Bulbarela Sampieri, Frixia Galán Méndez, Jorge Virues Delgadillo','mlopezdelcastillo@uv.mx','micloth@gmail.com','2281691201','UV','UV-CA-475 Ciencia, Ingeniería y Tecnología de Alimentos','CAEC','Salud y sustentabilidad','2024-01-11 22:10:41','2024-01-11 22:10:41',NULL),(21,0,1,'','','Arturo Cabrera Hernández, Irma Castillo Carmona, Luis Mejía Macario, Gabriel Grosskelwing Nuñez, Joaquín Sangabriel Lomelí, Heidi Anabel Jacome Sánchez','arturocabrerahernandez@itsm.edu.mx','arturocabrerahernandez@itsm.edu.mx','2283074040','ITS Misantla','ITESMIS-CA-8 Biotecnología Experimental','CAEF','Gestión ambiental','2024-01-11 22:20:11','2024-01-12 02:46:06',NULL),(22,0,1,'','','Pablo Octavio Aguilar, Ana Paola Martínez Falcón, Arturo Sánchez González, Aurelio Ramírez Bautista, Raúl Ortiz Pulido, Dulce María Galván Hernández, Sylvia Martínez Hernández, Jessica Bravo Cadena, Christian Berriozabal Islas','pablo_aguilar9900@uaeh.edu.mx','pablo_aguilar9900@uaeh.edu.mx','7717229375','UAEH','UAEH-CA-99 Conservación Biológica','CAC','Gestión ambiental','2024-01-11 22:20:37','2024-01-12 01:07:19',NULL),(23,0,1,'','','Yadeneyro de la Cruz Elizondo, María de los Ángeles Chamorro Zárate, Héctor Venancio Narave Flores, Benito Hernández Castellanos, Oscar Carmona Hernández, Julio César Castañeda Ortega, Nancy Domínguez González, Andrea Suardíaz Solé, José Armando Lozada García, Citlali Aguilera Lira, Rodolfo Viveros Contreras','ydelacruz@uv.mx','ydelacruz@uv.mx','2282216769','UV','UV-CA-362 Investigación y Educación para el Desarrollo Sustentable','CAEF','Gestión ambiental','2024-01-11 22:35:09','2024-01-12 02:51:55',NULL),(25,0,1,'','','Vianey del Rosio Torres Pelayo, Beatriz Palmeros Sánchez, María del Carmen Ramírez Benítez','vitorres@uv.mx','vitorres@uv.mx','2284040042','UV','UV-CA-302 Biología de la Salud','CAEC','Salud y sustentabilidad','2024-01-11 22:51:19','2024-01-11 22:51:19',NULL),(26,0,1,'','','Elvira Morgado Viveros, Luis Pacheco Cobos, Celia Cecilia Acosta Hernández, Salvador Guzmán Guzmán, Elvira Morgado Viveros','emorgado@uv.mx','elmorvi@hotmail.com','2281075092','UV','UV-CA 417 Biología y Ecología del Comportamiento','CAEF','Salud y sustentabilidad','2024-01-12 00:21:54','2024-01-12 00:21:54',NULL),(27,0,1,'','','Daniel Hernández Pitalúa, Nelly Sánchez Gómez, Lizbeth Angelica Castañeda Escobar, Hugo Amilcar León Bonilla, Isai Pacheco Tejeda, Claudia Patria Fernández de Lara','daniel.hp@xalapa.tecnm.mx','dpitalua@yahoo.com','2288370144','ITS Xalapa','ITSXAL-CA-05 Tecnología Sustentable y Desarrollo','CAEC','Tecnología sustentable','2024-01-12 21:21:52','2024-01-13 01:16:20',NULL),(28,0,1,'','','David Ramírez Pérez, José Daniel Hernández Ventura, Adolfo Pelayo Moreno','daniel.hv@xalapa.tecnm.mx','david.ramirez@itsx.edu.mx','2281302533','ITS Xalapa','ITSXAL-CA-7 Ingeniería y Tecnología Multifuncional','CAEF','Tecnología sustentable','2024-01-12 21:58:10','2024-01-13 00:46:10',NULL),(29,0,1,'','','Jorge Manzo Denes, Genaro Alfonso Coria Ávila, Jaime Fisher y Salazar, Luis Isauro García Hernández, Porfirio Carrillo Castilla','jmanzo@uv.mx','jmanzo@uv.mx','2288471062','UV','UV-CA-28 Neurociencias','CAC','Salud y sustentabilidad','2024-01-12 23:48:58','2024-01-13 01:27:20',NULL),(30,0,1,'','','María Elena Hernández Aguilar, Gonzalo Emiliano Aranda Abreu, María Rebeca Toledo Cárdenas, Deissy Herrera Covarrubias, Fausto Rojas Durán, Lizbeth Donají Chi Castañeda, Jorge Manuel Suárez Medellin','elenahernandez@uv.mx','elenahernandez@uv.mx','2288354180','UV','UV-CA-304 Neuroquímica','CAC','Salud y sustentabilidad','2024-01-12 23:50:40','2024-01-13 01:25:13',NULL),(31,2,7,'','','Emilio Alfonso Suárez Domínguez, Angelina Ruíz Sánchez, Pascual Linares Márquez, Ibiza Martínez Serrano, Julliana Barretto, Rodolfo Martínez Mota, Eliezer Cocoletzi Vázquez.','emisuarez@uv.mx','emisuarez@uv.mx','2281785858','UV','UV-CA-491 Conservación de Vertebrados Silvestres y su Ambiente','CAEF','Gestión ambiental','2024-01-11 21:00:13','2024-01-12 01:44:02',NULL),(32,2,7,'','','Gerardo Meza Flores, Luis Roberto González Grovas, Felipe Dey García, Salvador Herrera Velarde, Lina Rodríguez Ramos','gerardo.mf@xalapa.tecnm.mx','gerardo_mflores@yahoo.com.mx','2281323912','ITS Xalapa','ITESXAL-CA-06 Sustentabilidad Industrial','CAEF','Tecnología sustentable','2024-01-11 21:02:34','2024-01-12 02:07:41',NULL),(33,2,7,'','','Daniel Bello Parra, Alberto Ceballos, Olga Yaneth Chang Espinosa, Luis de Jesús Montero García, Félix Murrieta Domínguez','daniel.bello@perote.tecnm.mx','daniel.bello@perote.tecnm.mx','2288358082','ITS Perote','ITESPE-CA-4 Procesos Industriales','CAEC','Sistemas de Géstión','2024-01-11 21:05:13','2024-01-12 02:26:33',NULL),(34,2,7,'','','Lilia Ortíz Rodríguez, Omar Ríos Romero, Nora Isela Ruiz Colorado, Jorge Alberto Pineda Posadas','doc-035@itsperote.edu.mx','mc.ortizlilia@gmail.com','2281716671','ITS Perote','ITESPE-CA-6 Biotecnología y Agroforestería Aplicada','CAEF','Salud y sustentabilidad','2024-01-11 21:05:56','2024-01-12 02:54:39',NULL),(35,2,7,'',' ','Leandro Chaires Martinez, Héctor Alejandro Jiménez Ávalos, Miguel Alberto Pérez Vargas','leandro.cm@alamo.tecnm.mx','leandrochaires@yahoo.com.mx','7831420967','ITS Álamo','ITESAT-CA-1 Biotecnología Alimentaria','CAEC','Tecnología sustentable','2024-01-11 21:08:26','2024-01-11 21:08:26',NULL),(36,2,7,'','','Virginia Lagunes Barradas, Rosalía Daza Merino, Erika María Ronquillo Mandujano, Lilia Licea Hernández, María Margarita González de la Tijera, Lorena Guzmán Rodríguez, Margarita del Carmen Torres Morales','virginia.lb@xalapa.tecnm.mx','viclag@hotmail.com','2281775378','ITS Xalapa','ITESXAL-CA-3 Sistemas Integrales para el Desarrollo de Tecnología Aplicada','CAEF','Tecnología sustentable','2024-01-11 21:11:23','2024-01-12 01:13:26',NULL);
+/*!40000 ALTER TABLE `participantes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `password_resets`
@@ -200,39 +272,6 @@ LOCK TABLES `posts` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `eventos`
---
-
-DROP TABLE IF EXISTS `eventos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `eventos` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sub_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `descripcion` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `date` date NULL DEFAULT NULL,
-  `urlimg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `eventos_name_unique` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `eventos`
---
-
-LOCK TABLES `eventos` WRITE;
-/*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
-INSERT INTO `eventos` VALUES (1,'WQEQWEWQE','QWEQWEQWE','QWEQWEQE','QWEQWEWQE', 2023-11-20,'2d15b0a8-a7a7-4261-913c-50a5234dcb6d.jpg','2023-11-20 11:29:37','2023-11-20 11:29:37',NULL);
-/*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `users`
 --
 
@@ -263,11 +302,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` 
-VALUES 
-(1,'Administrador','Administrador',NULL,'admin@admin.com',NULL,'$2y$10$BPPf1NOuSdsZkZtWyQoQEuGB0E4XivEcIE/YsKSEBiGUEO5iHbK1e','okmqsmQSQUlVRBTTkFopx8kAHf4JZmUb3D8Lp9GWGbu2wzJxIYOXqo4Vp96N', 2,'2022-11-23 08:26:55','2022-11-23 08:26:55','2022-11-23 08:26:55');
-
-
+INSERT INTO `users` VALUES (1,'Administrador','Administrador',NULL,'admin@admin.com',NULL,'$2y$10$BPPf1NOuSdsZkZtWyQoQEuGB0E4XivEcIE/YsKSEBiGUEO5iHbK1e','UA1lYo7pcdW6Am3aHkkBwnM1gVAh95AB2EvFxyQh8pTY6MFxGoX4sUdzIaL4',2,'2022-11-23 08:26:55','2022-11-23 08:26:55',NULL),(2,'Administrador','Administrador',NULL,'antonio@admin.com',NULL,'$2y$10$BPPf1NOuSdsZkZtWyQoQEuGB0E4XivEcIE/YsKSEBiGUEO5iHbK1e','REvjQ9eDIXPAN7L6euaDpriooXswWjx0bOstR7ArFCuZZYYWX93A8Ch3NE7g',3,'2022-11-23 08:26:55','2022-11-23 08:26:55',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -280,4 +315,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-20 14:29:33
+-- Dump completed on 2024-03-09 10:36:02
